@@ -42,16 +42,20 @@ re.c('hexagon')
   }
 })
 .init(function(){
-  this.on('mousedown', function(x, y){
+  this.on('mousedown', function(x, y){    
     // get distance from hex center to click
     var distance = Math.sqrt( Math.pow(this.center_x - x, 2) + Math.pow(this.center_y - y, 2) )
- 
+    
+    // if the distance from the click point is less than 25, highlight it.
     if(distance < this.size){
-      re.log('mouse distance '+distance+'!');
       if (this.color == "red")
         this.color = 'white'
       else
         this.color= 'red';
+    }
+    // otherwise, set it back to its normal state 
+    else{
+      this.color = "white"
     }
   });
 })
